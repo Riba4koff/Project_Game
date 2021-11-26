@@ -57,6 +57,7 @@ bool is_Draw(int arr[3][3], int SIZE)
 	}
 	return true;
 }
+
 //функция невыгодных ходов компьютера
 void block_moves(int arr[3][3], bool& moves)
 {
@@ -254,27 +255,20 @@ void moves_computer(int arr[3][3], int SIZE)
 	win_moves_computer(arr, moves); //выгодные ходы для пк, если таковы есть, иначе идем к блокировке.
 	if (moves)
 		block_moves(arr, moves); //Блокировка выгодных ходов для человека
-
 }
-
-
-int main()
+//Игра
+void game()
 {
-	setlocale(LC_ALL, "rus");
-	srand(time(NULL));
-
 	const int SIZE = 3;
 	int arr[SIZE][SIZE]{};
 	int x = 0, y = 0;
 	bool flag = true;
 
-	cout << "Подсказка. x вправо --- 0 --- 1 --- 2 -- > \t y вниз --- 0 --- 1 --- 2 -- >\n";
+	cout << "Подсказка. x вправо --- 0 --- 1 --- 2 -- > \t y вниз --- 0 --- 1 --- 2 -- >\n\n0 - Пустая клетка\n1 - крестик\n2 - нолик\n\n";
 	Show_arr(arr, SIZE);
-
 
 	while (flag)
 	{
-		
 		cout << "Ваш ход!\nВведите координаты x y: ";
 		cin >> x >> y;
 		cout << "\n";
@@ -329,11 +323,16 @@ int main()
 			cout << "Ничья!\n\n";
 			break;
 		}
-
-
 	}
 
+}
 
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	srand(time(NULL));
+
+	game();
 
 	return 0;
 }
